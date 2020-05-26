@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.win.dao.CommonuserDao">
+	
+	<!-- 查询xflb  -->
+	<select id="selectCommonuserByXflb" parameterType="String"  resultType="commonuser">
+		select xflb,SUM(ABS(jyje)) jyje from tbsoft171 where sfrzh=#{sfrzh} GROUP BY xflb ORDER BY jyje desc
+	</select>
+	
+	<!--  查询shmc -->
+	<select id="selectCommonuserByShmc"  resultType="commonuser">
+		select shmc,SUM(ABS(jyje)) jyje from tbsoft171 where sfrzh=#{sfrzh} GROUP BY shmc order by jyje desc
+	</select>
+	
+	<!-- 查询最近七天  -->
+	<select id="selectCommonuserBySeven"  resultType="commonuser">
+		select jyrq,SUM(ABS(jyje)) jyje from tbsoft171 where sfrzh=#{sfrzh} GROUP BY jyrq ORDER BY jyrq DESC LIMIT 7;
+	</select> 
+	
+	<!-- 按sfrzh查询消费信息列表  -->
+	<select id="selectCommonuserBySfrzh"  resultType="commonuser">
+		select * from tbsoft171  where sfrzh = #{sfrzh} order by jyrq desc
+		<!-- 执行分页查询 -->
+		<if test="start != null and rows != null">
+			limit #{start},#{rows}
+		</if>
+	</select>
+	
+	<!-- 按jyrq查询消费信息列表  -->
+	<select id="selectCommonuserByJyrq"  resultType="commonuser">
+		select * from tbsoft171  where sfrzh = #{sfrzh} and jyrq BETWEEN #{first} AND #{second} ORDER BY jyrq asc
+		<!-- 执行分页查询 -->
+		<if test="start != null and rows != null">
+			limit #{start},#{rows}
+		</if>
+	</select>
+	
+	<!-- 查询消费记录条数 -->
+	<select id="selectCommonuserCount"  resultType="Integer"> 
+		select count(*) from tbsoft171 where sfrzh = #{sfrzh} 
+	</select>
+	
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.win.dao.ManageruserDao">
+	
+	<!-- 按xm、sfrzh查询消费信息列表  -->
+	<select id="selectCommonuserByXmAndSfrzh"  resultType="commonuser">
+		select * from tbsoft171  where sfrzh = #{sfrzh} 
+		<!-- 执行分页查询 -->
+		<if test="start != null and rows != null">
+			limit #{start},#{rows}
+		</if>
+	</select>
+	
+	<!-- 查询消费记录条数 -->
+	<select id="selectCommonuserCount" resultType="Integer">
+		select count(*) from tbsoft171 where sfrzh = #{sfrzh}
+	</select>
+	
+</mapper>

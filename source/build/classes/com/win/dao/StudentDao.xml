@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+    
+<!-- namespace是用于绑定Dao接口的，即面向接口编程 -->
+<mapper namespace="com.win.dao.StudentDao" >
+
+	<!-- 1.不同年级学生用网情况（XTMC=软网关） -->
+    <select id="studentnetForList" resultType="studentnet">
+	    select grade, number from studentnet where grade!='2015' and grade!='2014' order by grade desc
+    </select>
+    
+	<!-- 2.不同年级学生的平均消费水平(jyje) -->
+	<select id="studentcostForList" resultType="studentcost">
+	    select grade, cost from studentcost where grade!='2015' and grade!='2014' order by grade desc
+    </select>
+	
+	<!-- 3.不同年级学生消费类别（XFLB）占比 -->
+	<!--grade  -->
+    <select id="gradeForList" resultType="String">
+	    select grade from studenttype group by grade order by grade desc;
+    </select>
+    <!--xflb  -->
+    <select id="xflbForList" resultType="String">
+	    select xflb from studenttype  group by xflb order by xflb desc;
+    </select>
+    <!--2016级  -->
+    <select id="gradeSixForList" resultType="Integer">
+	    select number from studenttype where grade='2016' order by xflb desc;
+    </select>
+    <!--2017级  -->
+    <select id="gradeSevenForList" resultType="Integer">
+	    select number from studenttype where grade='2017' order by xflb desc;
+    </select>
+    <!--2018级  -->
+    <select id="gradeEightForList" resultType="Integer">
+	    select number from studenttype where grade='2018' order by xflb desc;
+    </select>
+    <!--2019级  -->
+    <select id="gradeNineForList" resultType="Integer">
+	    select number from studenttype where grade='2019' order by xflb desc;
+    </select>
+	
+	<!-- 南海一饭堂,南海实训饭堂，不同年级的消费占比 -->
+	<!-- 南海一饭堂 -->
+	<select id="studentoneForList" resultType="studentst">
+	    select grade,sum(number) number from studentst where grade!='2015' and grade!='2014' and canteen like '南海学一饭堂%' group by grade
+    </select>
+    <!-- 南海实训饭堂 -->
+    <select id="studenttwoForList" resultType="studentst">
+	    select grade,sum(number) number from studentst where grade!='2015' and grade!='2014' and canteen like '南海实训饭堂%' group by grade
+    </select>
+	
+	<!-- 6.低于平均消费水平的学生之中不同年级之间的占比 -->
+	<select id="studentavgcostForList" resultType="studentavgcost">
+	    select sfrzh , avg_cost from tbst_avgcost
+    </select>
+	
+	<!-- 7.学生近几年的消费情况 -->
+    <select id="yearcostForList" resultType="studentnewcost">
+	    select substr(month,1,4) as month,sum(sum_cost) as sum_cost from tbst_cost where substr(month,1,4) between '2016' and '2019' group by substr(month,1,4) order by month asc
+    </select>
+    
+    <!-- 8. 2019年的月总额和月均消费情 -->
+    <select id="monthcostForList" resultType="studentnewcost">
+	    select * from tbst_cost where substr(month,1,4)='2019' order by month asc
+    </select>
+    
+</mapper>

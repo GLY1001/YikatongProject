@@ -1,0 +1,171 @@
+/*整体大页面的设置*/
+body,h1,h2,h3,h4,h5,h6,h7,p,table,tr,td,div{padding: 0; margin: 0; list-style: none;}
+.big_body{
+	background-image: url(../img/true.png);
+	width: 100%;
+	height: 150%;
+	background-size: 100% 100%;
+    position: absolute;
+}
+
+/*标题框方面的设置*/
+.big_body .big_title{
+	width: 100%;
+	height: 30%;
+	background: url(../img/title.png) no-repeat;
+	background-size: 100% 30%;
+	position: absolute;
+ 	top: 0%;
+ 	right: 12%;
+ 	left: 0%;
+    box-sizing: border-box;
+}
+/*退出登录按钮设置*/
+.big_body .big_title .quit{
+	background: transparent;
+	border-radius: 10px;
+	width:100px;
+	border: 3px solid #4788fb;
+	float: right;
+	margin-top: -10px;
+	margin-right: 25px;
+}
+
+
+/*标题设置*/
+.big_body .big_title h3{
+	color: white;
+	text-align: center;
+	font-family: "微软雅黑";
+	font-size: 36px;
+	font-weight: bold;
+}
+
+/*三个图的div设计*/
+.big_body .big_photo{
+	width: 100%;
+	height: 40%;
+	/*border: 1px solid blue;*/
+	margin-top: 6%;
+	position: absolute;
+}
+
+/*第一个photo1*/
+.big_body .big_photo .photo1{
+	width: 28%;
+	height: 100%;
+	position: absolute;
+	left: 2%;
+	top: 1%;
+	/*border: 1px solid red;*/
+}
+/*photo2*/
+.big_body .big_photo .photo2{
+	width: 38%;
+	height: 100%;
+	position: absolute;
+	left: 31%;
+	top: 1%;
+	/*border: 1px solid red;*/
+}
+
+/*photo3*/
+.big_body .big_photo .photo3{
+	width: 28%;
+	height: 100%;
+	position: absolute;
+	right: 2%;
+	top: 1%;
+	/*border: 1px solid red;*/
+}
+
+/*最外边边框*/
+.out_border{
+	width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 2px solid #4788fb;
+    padding: 1px;
+    box-sizing: border-box;
+    
+}
+
+/*内边框设置*/
+.inner_border{
+	width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border:1px solid #4788fb;
+    border-radius: 10px;
+}
+
+/*查询框和table设置*/
+.big_body .main_bottom{
+	width: 100%;
+	height: 50%;
+	min-height:555px;
+	position: absolute;
+	top: 8%;	
+	right:3px;
+}
+
+.big_body .main_bottom .entry{
+	width: 100%;
+	height: 20%;
+	margin-top: 5px;
+	margin-left: 10px;
+	color: white;
+	font-size: 16px;
+}
+/*输入框设置*/
+.big_body .main_bottom .entry .time{
+	background: transparent;
+	border-radius: 10px;
+	width:100px;
+	border: 2px solid #4788fb;
+	margin: 5px;	
+}
+/*当文本输入时文字是白色的*/
+input{
+	font: "微软雅黑";
+	color: white;
+	font-size: 14px;
+}
+/*单独设置查询的样式*/
+.big_body .main_bottom .entry .check{
+	background: transparent;
+	border-radius: 10px;
+	width:50px;
+	border: 3px solid #4788fb;
+}
+
+/*table的设置 5行11列*/
+.big_body .main_bottom .message{
+	width: 100%;
+	height: 90%;
+	margin-top: 2px;
+	margin-left: 10px;
+	color: white;
+	font-size: 16px;
+}
+ /*table设置*/
+table{
+	width:90%;
+	height: 100%;
+	border: 2px solid #4788fb;
+	border-collapse: collapse;/*边框合并*/
+	text-align: center;
+}
+
+/*td设置*/
+td{
+	border: 2px solid #4788fb;
+	width: 120px;/*格子统一大小*/
+	height: 30px;
+	
+}
+
+
+
+
+

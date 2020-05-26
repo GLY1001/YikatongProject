@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- 普通用户登录 -->
+<!-- namespace是用于绑定Dao接口的，即面向接口编程 -->
+<mapper namespace="com.win.dao.UserDao" >
+    <!-- 查询用户 -->
+    <select id="findUser" parameterType="String" resultType="user">
+	    select * from tbuser where username = #{username} and password =#{password}
+    </select>
+</mapper>

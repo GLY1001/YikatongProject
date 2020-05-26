@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+    
+<!-- namespace是用于绑定Dao接口的，即面向接口编程 -->
+<mapper namespace="com.win.dao.TeacherDao" >
+
+	<!-- 1、消费类别XFLB占比（饼图） -->
+    <select id="teachertypeForList" resultType="teachertype">
+	    select xflb, number from teachertype order by number desc
+    </select>
+	
+	<!-- 2、最受教职工欢迎的场所，SHMC（top8） -->
+	<select id="teacherplaceForList" resultType="teacherplace">
+	    select shmc, number from teacherplace order by number asc
+    </select>
+	
+	<!-- 3. 2019年，教职工的月均消费 -->
+	<select id="teachercostForList" resultType="teachercost">
+	    select month, cost from teachercost order by month asc
+    </select>
+	
+	<!-- 4、老师年消费总额、年均消费 -->
+	<select id="teacheryearcostForList" resultType="teacheryearcost">
+	    select * from teacher_yearcost where year between '2016' and '2019' order by year asc
+    </select>
+	
+	<!-- 5、近几年老师在交通消费类型方面的趋势 -->
+	<select id="teachertrafficForList" resultType="teachertraffic">
+	    select * from teacher_xflb where xflb='交通类消费' and year between '2000' and '2019' order by year asc
+    </select>
+	
+</mapper>

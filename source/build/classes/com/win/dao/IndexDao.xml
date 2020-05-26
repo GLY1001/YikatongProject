@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+    
+<!-- namespace是用于绑定Dao接口的，即面向接口编程 -->
+<mapper namespace="com.win.dao.IndexDao" >
+
+	<!-- 最受师生欢迎的消费地点top15（师生消费最多的场所）SHMC -->
+	<select id="shmcForList" resultType="tbshmc">
+	    select shmc ,number from tbshmc order by number desc limit 10
+    </select>
+	
+	<!-- 各类消费类别（XFLB）占比 -->
+	<select id="xflbForList" resultType="tbtype">
+	    select xflb, number from tbtype order by number desc
+    </select>
+	
+	<!-- 各类交易类型（JYLX）占比 -->
+	<select id="kindForList" resultType="tbkind">
+	    select jylx, number from tbkind
+    </select>
+	
+	<!-- 2018学年各季度消费人流量占比 -->
+	<select id="seasonForList" resultType="tbseason">
+	    select season, number from tbseason
+    </select>
+	
+	<!-- 2015-2019五年内的消费总金额 -->
+	<select id="moneyForList" resultType="tbmoney">
+	    select year, money from tbmoney order by year asc
+    </select>
+	
+	<!-- 平均营业额 top10的商户 -->
+	<select id="avgcostForList" resultType="tbshmc">
+	    select shmc ,avg_cost from tbshmc order by avg_cost desc limit 10
+    </select>
+	
+	<!-- 2019年各个饭堂的人流量 -->
+	<select id="canteenPeople" resultType="tbcanteen">
+	    select shmc,people from tbcanteen
+    </select>
+	
+	<!-- 小卖部类型商户2019年10月的日营业额走势 -->
+	<!--shmc  -->
+    <select id="shmcnameForList" resultType="String">
+	    select shmc from tbshop group by shmc order by shmc desc
+    </select>
+    <!--jyrq  -->
+    <select id="jyrqForList" resultType="String">
+	    select jyrq from tbshop group by jyrq order by jyrq asc
+    </select>
+    <!--南海启航教学超市 -->
+    <select id="supermarketForList" resultType="Integer">
+	    select day_cost from tbshop where shmc='南海启航教学超市' order by jyrq asc
+    </select>
+    <!--南海语晨水果便利店   -->
+    <select id="fruitForList" resultType="Integer">
+	    select day_cost from tbshop where shmc='南海语晨水果便利店' order by jyrq asc
+    </select>
+   <!--轻院快乐惠小卖部 -->
+    <select id="storeForList" resultType="Integer">
+	    select day_cost from tbshop where shmc='轻院快乐惠小卖部' order by jyrq asc
+    </select>
+	
+</mapper>	
